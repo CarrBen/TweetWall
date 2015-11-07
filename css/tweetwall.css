@@ -1,0 +1,46 @@
+body, html{
+	border: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.3em;
+}
+
+.row{
+	width: 100%;
+	height: 20%;
+}
+
+.cell{
+	height:100%;
+	width: 20%;
+	vertical-align:middle;
+	float:left;
+}
+
+.tweet-wrapper{
+	height: 100%;
+	width: 100%;
+	display: table;
+}
+
+.tweet-container{
+	vertical-align:middle;
+	display:table-cell;
+}
+
+.tweet{
+	
+}
+
+.lancs{
+	color: rgb(240,240,240);
+	background-color: rgb(200,50,0);
+}
+
+.york{
+	color: rgb(220,190,0);
+	background-color: rgb(20,20,20);
+}
