@@ -7,7 +7,7 @@
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/CarrBen/TweetWall",
   "private": true,
   "ignore": [
     "**/.*",
@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
+    "typed.js": "~1.1.1",
     "jquery-2.1.0.min": "http://code.jquery.com/jquery-2.1.0.min.js"
   }
 }

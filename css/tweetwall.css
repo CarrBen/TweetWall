@@ -18,6 +18,8 @@ body, html{
 	width: 20%;
 	vertical-align:middle;
 	float:left;
+	position:relative;
+	overflow:hidden;
 }
 
 .tweet-wrapper{
@@ -29,10 +31,37 @@ body, html{
 .tweet-container{
 	vertical-align:middle;
 	display:table-cell;
+	padding: 0.8em;
 }
 
-.tweet{
-	
+.switcher{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+	transition: top 1s, left 1s;
+}
+
+.switcher.current{
+	z-index: 1;
+}
+
+.switcher.right{
+	left: 100%;
+}
+
+.switcher.left{
+	left: -100%;
+}
+
+.switcher.up{
+	top: -100%;
+}
+
+.switcher.down{
+	top: 100%;
 }
 
 .lancs{
