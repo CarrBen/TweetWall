@@ -8,9 +8,9 @@ body, html{
 	font-size: 1.3em;
 }
 
-.row{
-	width: 100%;
-	height: 20%;
+#grid{
+	width:100%;
+	height:100%;
 }
 
 .cell{
