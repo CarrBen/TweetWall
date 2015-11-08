@@ -5,14 +5,16 @@
 	<script src="\bower_components\jquery-2.1.0.min\index.js"></script>
 	<script src="\bower_components\typed.js\dist\typed.min.js"></script>
 	<script src="\js\tweetwall.js"></script>
-	<style id="gridStyle">
-		/*Inline styles can be changed dynamically by JavaScript*/
-		.row{width: 100%; height: 20%;}
-		.cell{height:100%; width:20%;}
-	</style>
 </head>
 <body>
 	<div id="grid">
 	</div>
+	<script>
+		initGrid(3,3);
+		var dirs = ["right", "up", "down", "left"];
+		setInterval(function(){
+			switchCell(Math.floor(6*Math.random()),Math.floor(6*Math.random()),dirs[Math.floor(4*Math.random())])
+		}, 500);
+	</script>
 </body>
 </html>
