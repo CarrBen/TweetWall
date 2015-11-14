@@ -65,11 +65,11 @@ body, html{
 }
 
 .lancs{
-	color: rgb(240,240,240);
-	background-color: rgb(200,50,0);
+	color: white;
+	background-color: #d65747;
 }
 
 .york{
-	color: rgb(220,190,0);
-	background-color: rgb(20,20,20);
+	color: #363636;
+	background-color: #efbb39;
 }

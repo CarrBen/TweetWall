@@ -56,7 +56,7 @@ function makeCell(row, x, y){
 
 function makeSwitcher(classes){
 	var switcher = $("<div></div>");
-	switcher.addClass("switcher");
+	setupSwitcher(switcher);
 	switcher.addClass(classes);
 	
 	makeTweet(switcher);
@@ -70,26 +70,57 @@ function makeSwitcher(classes){
 	return switcher;
 }
 
+function setupSwitcher(switcher){
+	switcher.addClass("switcher");
+}
+
 function makeTweet(switcher){
 	var wrapper = $("<span></span>");
 	wrapper.addClass("tweet-wrapper");
 	var container = $("<span></span>");
 	container.addClass("tweet-container");
-	var tweet = $("<span></span>");
-	tweet.addClass("tweet");
 	
 	switcher.append(wrapper);
 	wrapper.append(container);
+	setupTweet(container);
+}
+
+function setupTweet(container){
+	var tweet = $("<span></span>");
+	tweet.addClass("tweet");
+	
 	container.append(tweet);
 }
 
-function switchCell(x, y, direction){
+function switchCell(x, y, direction, toClass, message){
 	var cell = $("#cell_" + x + "-" + y);
 	var current = $(".switcher.current", cell);
 	var background = $(".switcher:not(.current)", cell)
+	
 	current.addClass(direction);
+	
+	if(toClass != undefined && toClass != null){
+		background.removeClass();
+		setupSwitcher(background);
+		background.addClass(toClass);
+	}
+	
 	setTimeout(function(){
 		current.removeClass(direction).removeClass("current");
 		background.addClass("current");				
 	}, 1000);
+	
+	$(".tweet", background).remove();
+	setupTweet($(".tweet-container", background));
+	var backgroundTweet = $(".tweet", background);
+	
+	backgroundTweet.text("");
+	$(".typed-cursor", background).remove();
+	if(message != undefined && message != null){
+		backgroundTweet.typed({
+			strings:[message],
+			typeSpeed: 100,
+			startDelay: 1000
+		});
+	}
 }
