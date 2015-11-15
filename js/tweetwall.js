@@ -1,3 +1,6 @@
+var cellPool = [];
+var WAIT_BEFORE_FREEING = 3000;
+
 function initGrid(width, height){
 	var grid = $("#grid");
 	//Abort if there is no grid container
@@ -18,6 +21,8 @@ function initGrid(width, height){
 	for(var y=0; y<height; y+=1){
 		makeRow(grid, width, y);
 	}
+	
+	cellPool = $(".cell");
 }
 
 function setGridCss(width, height){
@@ -92,8 +97,10 @@ function setupTweet(container){
 	container.append(tweet);
 }
 
-function switchCell(x, y, direction, toClass, message){
-	var cell = $("#cell_" + x + "-" + y);
+function switchCell(cell, direction, toClass, message){
+	if(!("filter" in cell)){
+		cell = $(cell);
+	}
 	var current = $(".switcher.current", cell);
 	var background = $(".switcher:not(.current)", cell)
 	
@@ -114,13 +121,24 @@ function switchCell(x, y, direction, toClass, message){
 	setupTweet($(".tweet-container", background));
 	var backgroundTweet = $(".tweet", background);
 	
+	cellPool = cellPool.filter(function(a,b,c){return b != cell[0]})
+	
 	backgroundTweet.text("");
 	$(".typed-cursor", background).remove();
 	if(message != undefined && message != null){
 		backgroundTweet.typed({
 			strings:[message],
 			typeSpeed: 100,
-			startDelay: 1000
+			startDelay: 1000,
+			callback: finishedTyping(cell)
 		});
+	}
+}
+
+function finishedTyping(cell){
+	return function(){
+		setTimeout(function(){
+			cellPool.push(cell[0]);
+		}, WAIT_BEFORE_FREEING);
 	}
 }

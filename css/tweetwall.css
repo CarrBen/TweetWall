@@ -80,18 +80,21 @@ body, html{
     -moz-animation: blink 0.7s linear infinite;
     animation: blink 0.7s linear infinite;
 }
+
 @keyframes blink{
     0% { opacity:1; }
 	50% { opacity:1; }
 	50.1% { opacity:0; }
     100% { opacity:0; }
 }
+
 @-webkit-keyframes blink{
     0% { opacity:1; }
 	50% { opacity:1; }
 	50.1% { opacity:0; }
     100% { opacity:0; }
 }
+
 @-moz-keyframes blink{
     0% { opacity:1; }
 	50% { opacity:1; }
