@@ -10,11 +10,9 @@
 	<div id="grid">
 	</div>
 	<script>
-		initGrid(4,4);
-		var dirs = ["right", "up", "down", "left"];
+		TweetWall.initGrid(4,4);
 		setInterval(function(){
-			var cell = cellPool[Math.floor(Math.random()*cellPool.length)];
-			switchCell(cell,dirs[Math.floor(4*Math.random())],"lancs","Twwwwaaaaaaaaat")
+			TweetWall.switchFreeCell("lancs","Twwwwaaaaaaaaat")
 		}, 500);
 	</script>
 </body>

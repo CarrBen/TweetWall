@@ -1,5 +1,13 @@
+(function(window, $){
+	
+if($ == undefined || $ == null){
+	$ = window.$;
+}
+	
 var cellPool = [];
-var WAIT_BEFORE_FREEING = 3000;
+var config = {};
+config.freeWait = 3000;
+config.dirs = ["right", "up", "down", "left"];
 
 function initGrid(width, height){
 	var grid = $("#grid");
@@ -31,6 +39,19 @@ function setGridCss(width, height){
 	var cellWidth = 100/width + "%";
 	style.text(".row{width:100%; height:" + rowHeight + ";}" + 
 				".cell{height:100%; width:" + cellWidth + ";}");
+}
+
+function configure(options){
+	if(options == undefined || options == null){
+		return;
+	}
+	
+	if("freeWait" in options){
+		config.freeWait = options.freeWait;
+	}
+	if("dirs" in options){
+		config.dirs = options.dirs;
+	}
 }
 
 function makeRow(grid, width, y){
@@ -98,7 +119,7 @@ function setupTweet(container){
 }
 
 function switchCell(cell, direction, toClass, message){
-	if(!("filter" in cell)){
+	if(cell == undefined || !("filter" in cell)){
 		cell = $(cell);
 	}
 	var current = $(".switcher.current", cell);
@@ -139,6 +160,28 @@ function finishedTyping(cell){
 	return function(){
 		setTimeout(function(){
 			cellPool.push(cell[0]);
-		}, WAIT_BEFORE_FREEING);
+		}, config.freeWait);
 	}
 }
+
+function switchFreeCell(toClass, message){
+	var cell = cellPool[Math.floor(Math.random()*cellPool.length)];
+	switchCell(cell,config.dirs[Math.floor(4*Math.random())],"lancs","Twwwwaaaaaaaaat")
+}
+
+var exports = {};
+exports.initGrid = initGrid;
+exports.switchFreeCell = switchFreeCell;
+exports.configure = configure;
+
+if(typeof(define) === 'function' && define.amd){
+	define(['jquery'], function(){
+		return exports;
+	})
+}
+else{
+	window.TweetWall = exports;
+}
+
+return exports;
+})(this);
