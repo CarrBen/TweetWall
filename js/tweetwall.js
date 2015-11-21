@@ -150,6 +150,7 @@ function switchCell(cell, direction, toClass, message){
 	$(".typed-cursor", background).remove();
 	if(message != undefined && message != null){
 		backgroundTweet.typed({
+			contentType: 'html',
 			strings:[message],
 			typeSpeed: 100,
 			startDelay: 1000,
