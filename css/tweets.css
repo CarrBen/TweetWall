@@ -1,0 +1,19 @@
+.lancs{
+	color: white;
+	background-color: #d65747;
+}
+
+.york{
+	color: #363636;
+	background-color: #efbb39;
+}
+
+.york a{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.lancs a{
+	font-weight: bold;
+	text-decoration: none;
+}

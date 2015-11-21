@@ -28,3 +28,11 @@ gulp.task('clean', function() {
 gulp.task('default', ['clean'], function(){
 	gulp.start('styles', 'replace-urls', 'move');
 });
+
+gulp.task('watch', function(){
+	gulp.watch('css', ['styles']);
+	
+	gulp.watch('js', ['move']);
+	
+	gulp.watch('.', ['replace-urls']);
+});

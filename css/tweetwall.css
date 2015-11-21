@@ -63,16 +63,6 @@ body, html{
 	top: 100%;
 }
 
-.lancs{
-	color: white;
-	background-color: #d65747;
-}
-
-.york{
-	color: #363636;
-	background-color: #efbb39;
-}
-
 .typed-cursor{
     opacity: 1;
     -webkit-animation: blink 0.7s linear infinite;
