@@ -37,8 +37,10 @@ function setGridCss(width, height){
 	var style = $("#gridStyle");
 	var rowHeight = 100/height + "%";
 	var cellWidth = 100/width + "%";
+	var fontSize = 5/Math.sqrt(width*height);
 	style.text(".row{width:100%; height:" + rowHeight + ";}" + 
-				".cell{height:100%; width:" + cellWidth + ";}");
+				".cell{height:100%; width:" + cellWidth + ";}" + 
+				"body{font-size:" + fontSize + "em;}");
 }
 
 function configure(options){
@@ -166,7 +168,7 @@ function finishedTyping(cell){
 
 function switchFreeCell(toClass, message){
 	var cell = cellPool[Math.floor(Math.random()*cellPool.length)];
-	switchCell(cell,config.dirs[Math.floor(4*Math.random())],"lancs","Twwwwaaaaaaaaat")
+	switchCell(cell,config.dirs[Math.floor(4*Math.random())],toClass,message);
 }
 
 var exports = {};
