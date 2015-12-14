@@ -3,22 +3,22 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	replace = require('gulp-replace'),
 	del = require('del');
-	
+
 gulp.task('styles', function(){
-	gulp.src('css\\**\\*.css')
+	gulp.src('css/**/*.css')
 	.pipe(concat('tweetwall.css'))
-	.pipe(gulp.dest('dist\\css'));
+	.pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('replace-urls', function(){
 	gulp.src(['tweetwall.html'])
-	.pipe(replace('bower_components\\', 'js\\'))
+	.pipe(replace('bower_components/', 'js/'))
 	.pipe(gulp.dest('dist'))
 });
 
 gulp.task('move', function(){
-	gulp.src(['js\\tweetwall.js', 'bower_components\\**\\*.js'])
-	.pipe(gulp.dest('dist\\js'));
+	gulp.src(['js/tweetwall.js', 'bower_components/**/*.js'])
+	.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('clean', function() {
@@ -31,8 +31,8 @@ gulp.task('default', ['clean'], function(){
 
 gulp.task('watch', function(){
 	gulp.watch('css', ['styles']);
-	
+
 	gulp.watch('js', ['move']);
-	
+
 	gulp.watch('.', ['replace-urls']);
 });
